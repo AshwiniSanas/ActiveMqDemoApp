@@ -3,9 +3,9 @@ package com.example.demo;
 
 
 
-import com.activemq.demo.ArticleController;
-import com.activemq.demo.ArticleService;
-import com.activemq.demo.Article;
+import com.activemq.demo.controller.ArticleController;
+import com.activemq.demo.model.Article;
+import com.activemq.demo.service.ArticleService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

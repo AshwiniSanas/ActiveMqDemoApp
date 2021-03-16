@@ -1,4 +1,4 @@
-package com.activemq.demo;
+package com.activemq.demo.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.activemq.demo.exceptions.CustomSuccessResponse;
+import com.activemq.demo.exceptions.InvalidInputException;
+import com.activemq.demo.model.ArticleDto;
+import com.activemq.demo.service.PublishService;
 
 /**
  * This class is used to expose the rest  endpoint for publishing an article.

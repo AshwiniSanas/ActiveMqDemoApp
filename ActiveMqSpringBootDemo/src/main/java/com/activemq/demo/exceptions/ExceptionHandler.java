@@ -1,4 +1,4 @@
-package com.activemq.demo;
+package com.activemq.demo.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.activemq.demo;
+package com.activemq.demo.service;
 
 import java.util.stream.Collectors;
 import org.everit.json.schema.ValidationException;
@@ -8,6 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
+
+import com.activemq.demo.SchemaValidator;
+import com.activemq.demo.exceptions.CustomSuccessResponse;
+import com.activemq.demo.exceptions.InvalidInputException;
+import com.activemq.demo.model.Article;
+import com.activemq.demo.model.ArticleDto;
 
 
 /**

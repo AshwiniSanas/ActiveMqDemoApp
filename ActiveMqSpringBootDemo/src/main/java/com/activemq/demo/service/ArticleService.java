@@ -1,4 +1,4 @@
-package com.activemq.demo;
+package com.activemq.demo.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.activemq.demo.exceptions.ArticleIdNotFoundException;
+import com.activemq.demo.model.Article;
+import com.activemq.demo.repository.ArticleRepository;
 
 @Service
 public class ArticleService

@@ -2,7 +2,7 @@ package com.example.demo;
 
 import org.junit.jupiter.api.Test;
 
-import com.activemq.demo.CustomSuccessResponse;
+import com.activemq.demo.exceptions.CustomSuccessResponse;
 
  class CustomSuccessResponseTest {
 

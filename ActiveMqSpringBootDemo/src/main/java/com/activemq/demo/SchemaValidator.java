@@ -8,7 +8,7 @@ import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-
+import com.activemq.demo.model.ArticleDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**

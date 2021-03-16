@@ -1,4 +1,4 @@
-package com.activemq.demo;
+package com.activemq.demo.exceptions;
 
 import org.everit.json.schema.ValidationException;
 

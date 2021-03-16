@@ -1,10 +1,13 @@
-package com.activemq.demo;
+package com.activemq.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.activemq.demo.exceptions.ArticleIdNotFoundException;
+import com.activemq.demo.service.ArticleService;
 
 /**
  * This class defines rest endpoint for deleting an article

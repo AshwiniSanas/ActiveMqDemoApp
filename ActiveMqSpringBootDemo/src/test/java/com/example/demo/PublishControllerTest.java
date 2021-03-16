@@ -1,10 +1,10 @@
 package com.example.demo;
 
 
-import com.activemq.demo.ArticleDto;
-import com.activemq.demo.CustomSuccessResponse;
-import com.activemq.demo.PublishController;
-import com.activemq.demo.PublishService;
+import com.activemq.demo.controller.PublishController;
+import com.activemq.demo.exceptions.CustomSuccessResponse;
+import com.activemq.demo.model.ArticleDto;
+import com.activemq.demo.service.PublishService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package com.activemq.demo;
+package com.activemq.demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

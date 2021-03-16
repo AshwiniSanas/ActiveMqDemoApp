@@ -2,7 +2,7 @@ package com.example.demo;
 
 import org.junit.jupiter.api.Test;
 
-import com.activemq.demo.Article;
+import com.activemq.demo.model.Article;
 
 import static org.junit.jupiter.api.Assertions.*;
 

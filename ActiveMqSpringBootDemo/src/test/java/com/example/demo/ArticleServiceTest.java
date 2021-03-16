@@ -9,10 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.activemq.demo.ArticleIdNotFoundException;
-import com.activemq.demo.ArticleRepository;
-import com.activemq.demo.ArticleService;
-import com.activemq.demo.Article;
+import com.activemq.demo.exceptions.ArticleIdNotFoundException;
+import com.activemq.demo.model.Article;
+import com.activemq.demo.repository.ArticleRepository;
+import com.activemq.demo.service.ArticleService;
 
 import java.util.ArrayList;
 import java.util.List;

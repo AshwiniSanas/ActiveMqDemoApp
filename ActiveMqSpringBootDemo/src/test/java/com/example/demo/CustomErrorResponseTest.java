@@ -2,7 +2,7 @@ package com.example.demo;
 
 import org.junit.jupiter.api.Test;
 
-import com.activemq.demo.CustomErrorResponse;
+import com.activemq.demo.exceptions.CustomErrorResponse;
 
  class CustomErrorResponseTest {
 

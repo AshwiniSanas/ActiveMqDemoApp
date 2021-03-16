@@ -10,9 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 
-import com.activemq.demo.ArticleDto;
-import com.activemq.demo.CustomSuccessResponse;
-import com.activemq.demo.PublishService;
+import com.activemq.demo.exceptions.CustomSuccessResponse;
+import com.activemq.demo.model.ArticleDto;
+import com.activemq.demo.service.PublishService;
 
 import static org.mockito.Mockito.*;
 
