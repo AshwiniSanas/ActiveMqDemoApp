@@ -14,23 +14,8 @@ import lombok.Setter;
 public class CustomSuccessResponse {
 	
   
-    private int status;
-    private String message;
-
+    private int status=HttpStatus.OK.value();
+    private String message="Success";
     
-    /**
-     * 
-     * @return responseSuccess
-     */
-    public CustomSuccessResponse returnResponse()
-    {
-    String response="Success";
-    
-         CustomSuccessResponse responseSuccess=new CustomSuccessResponse();
-         responseSuccess.setStatus(HttpStatus.OK.value());
-         responseSuccess.setMessage(response);
-     
-         return responseSuccess;
-    }
 }
 

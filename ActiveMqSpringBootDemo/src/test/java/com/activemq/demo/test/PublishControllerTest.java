@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.activemq.demo.test;
 
 
 import com.activemq.demo.controller.PublishController;
@@ -59,8 +59,8 @@ class PublishControllerTest {
     void publishArticle_returns_response_OK() throws Exception {
         ObjectMapper om = new ObjectMapper();
        
-		CustomSuccessResponse response = null;
-		when(publishService.publishArticle(any(ArticleDto.class))).thenReturn(new ResponseEntity<CustomSuccessResponse>(response, HttpStatus.OK));
+		String response = null;
+		when(publishService.publishArticle(any(ArticleDto.class))).thenReturn(new ResponseEntity<String>(response, HttpStatus.OK));
         MvcResult result = mockMvc.perform(post("/publisher/articles")
                 .content(om.writeValueAsString(articleDTO))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))

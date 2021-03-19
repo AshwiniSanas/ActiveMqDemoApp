@@ -9,10 +9,9 @@ import org.everit.json.schema.ValidationException;
  */
 public class InvalidInputException extends Exception {
 	
-	
      public InvalidInputException(String errors,ValidationException e)
      {
-    	  super(e.getMessage()+" "+errors);
+         super(e.getMessage()+" "+errors);
      }
 
     

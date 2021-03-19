@@ -1,16 +1,16 @@
 package com.activemq.demo.model;
 
 import lombok.*;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import java.io.Serializable;
 
-/**This is an entity class which declares the attributes for the Article
- * @author Ashwini.Sanas 
+/**
+ * This is an entity class which declares the attributes for the Article
+ * @author Ashwini.Sanas
+ *This return statement gives a method call to findAll method in ArticleRepository class.
  */
 
 @Entity

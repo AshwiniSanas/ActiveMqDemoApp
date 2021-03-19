@@ -22,7 +22,7 @@ public class MessageReceiver  extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-      from("jms:queue:"+inboundEndpoint).marshal().json(JsonLibrary.Jackson).to("http://localhost:8090/articles");
+      from("jms:queue:"+inboundEndpoint).marshal().json(JsonLibrary.Jackson).to("http://localhost:8093/articles");
         
     }
 }

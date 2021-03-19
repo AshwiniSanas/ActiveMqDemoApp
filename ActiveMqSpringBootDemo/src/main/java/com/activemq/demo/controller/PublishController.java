@@ -14,6 +14,7 @@ import com.activemq.demo.exceptions.CustomSuccessResponse;
 import com.activemq.demo.exceptions.InvalidInputException;
 import com.activemq.demo.model.ArticleDto;
 import com.activemq.demo.service.PublishService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * This class is used to expose the rest  endpoint for publishing an article.
@@ -34,9 +35,10 @@ public class PublishController {
           * -This is ArticleDto object
           * @return This return statement gives a method call to the publishArticle method of PublishService class.
           * @throws InvalidInputException
+          * @throws JsonProcessingException 
           */
 	    @PostMapping("/articles")
-	    public ResponseEntity<CustomSuccessResponse> publishArticle(@RequestBody ArticleDto article) throws InvalidInputException
+	    public ResponseEntity<String> publishArticle(@RequestBody ArticleDto article) throws InvalidInputException, JsonProcessingException
 	    {
 	    	
                   return publishService.publishArticle(article);

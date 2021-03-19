@@ -1,7 +1,4 @@
-package com.example.demo;
-
-
-
+package com.activemq.demo.test;
 
 import com.activemq.demo.controller.ArticleController;
 import com.activemq.demo.model.Article;
@@ -126,16 +123,16 @@ class ArticleControllerTest {
                 .andExpect(jsonPath("$[0].noOfPages", is(10)))
                 .andExpect(jsonPath("$[0].authorName", is("njns")))
                 .andExpect(jsonPath("$[0].authorEmailAddress", is("cjn")))
-                .andExpect(jsonPath("$[0].active", is(true)))
-                .andExpect(jsonPath("$[0].published", is(false)))
+                .andExpect(jsonPath("$[0].isActive", is(true)))
+                .andExpect(jsonPath("$[0].isPublished", is(false)))
                 .andExpect(jsonPath("$[1].articleId", is(2)))
                 .andExpect(jsonPath("$[1].title", is("abc")))
                 .andExpect(jsonPath("$[1].shortTitle", is("def")))
                 .andExpect(jsonPath("$[1].noOfPages", is(101)))
                 .andExpect(jsonPath("$[1].authorName", is("jkl")))
                 .andExpect(jsonPath("$[1].authorEmailAddress", is("mno")))
-                .andExpect(jsonPath("$[1].active", is(true)))
-                .andExpect(jsonPath("$[1].published", is(false)));
+                .andExpect(jsonPath("$[1].isActive", is(true)))
+                .andExpect(jsonPath("$[1].isPublished", is(false)));
         verify(articleService, times(1)).findAll();
 
     }
@@ -151,8 +148,8 @@ class ArticleControllerTest {
                 .andExpect(jsonPath("$.noOfPages", is(10)))
                 .andExpect(jsonPath("$.authorName", is("njns")))
                 .andExpect(jsonPath("$.authorEmailAddress", is("cjn")))
-                .andExpect(jsonPath("$.active", is(true)))
-                .andExpect(jsonPath("$.published", is(false)));
+                .andExpect(jsonPath("$.isActive", is(true)))
+                .andExpect(jsonPath("$.isPublished", is(false)));
         verify(articleService,times(1)).findById(1);
 
 
