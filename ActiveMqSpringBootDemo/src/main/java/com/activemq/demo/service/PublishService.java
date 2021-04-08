@@ -1,20 +1,14 @@
 package com.activemq.demo.service;
 
-import java.util.stream.Collectors;
-import org.everit.json.schema.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import com.activemq.demo.SchemaValidator;
-import com.activemq.demo.exceptions.CustomSuccessResponse;
 import com.activemq.demo.exceptions.InvalidInputException;
 import com.activemq.demo.model.Article;
 import com.activemq.demo.model.ArticleDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * This class is used to return the response for a valid/invalid post request.
@@ -29,7 +23,11 @@ public class PublishService
 	@Autowired
 	JmsTemplate jmsTemplate;
 
-	SchemaValidator schemaValidator = new SchemaValidator();
+	@Autowired
+	Article article;
+
+	@Autowired
+	SchemaValidator schemaValidator;
 
 	@Value("${inbound.endpoint}")
 	private String inboundEndpoint;
@@ -40,42 +38,15 @@ public class PublishService
 	 * @return This return statement returns the response in case of a successful
 	 *         post request.
 	 * @throws InvalidInputException
-	 * @throws JsonProcessingException 
+	 * @throws JsonProcessingException
 	 */
 
-	public ResponseEntity<String> publishArticle(ArticleDto articleDto) throws InvalidInputException, JsonProcessingException {
+	public void publishArticle(ArticleDto articleDto) throws JsonProcessingException {
 
-		try {
-			schemaValidator.validateArticle(articleDto);
+		schemaValidator.validateArticle(articleDto);
 
-			Article theArticle = Article.builder().articleId((int) articleDto.getArticleId())
-					.authorEmailAddress((String) articleDto.getAuthorEmailAddress())
-					.isActive((boolean) articleDto.getIsActive()).authorName((String) articleDto.getAuthorName())
-					.isPublished((boolean) articleDto.getIsPublished()).noOfPages((int) articleDto.getNoOfPages())
-					.shortTitle((String) articleDto.getShortTitle()).title((String) articleDto.getTitle()).build();
+		jmsTemplate.convertAndSend(inboundEndpoint, article.articleBuilder(articleDto));
 
-			jmsTemplate.convertAndSend(inboundEndpoint, theArticle);
-
-			CustomSuccessResponse responseSuccess = new CustomSuccessResponse();
-			ObjectMapper om=new ObjectMapper();
-            String jsonResponse=om.writerWithDefaultPrettyPrinter().writeValueAsString(responseSuccess);
-			
-			return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
-
-		}
-
-		catch (ValidationException e) {
-			System.out.println(e.getMessage());
-
-			String errors = e.getCausingExceptions().stream().map(ValidationException::getMessage)
-					        .collect(Collectors.joining(","));
-			
-			System.out.println(errors);
-
-			throw new InvalidInputException(errors, e);
-            
-			
-		}
 	}
 
 }

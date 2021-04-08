@@ -2,8 +2,6 @@ package com.activemq.demo.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.activemq.demo.exceptions.ArticleIdNotFoundException;
@@ -23,6 +21,20 @@ public class ArticleService
 	 *         ArticleRepository class.
 	 */
 
+//	@Transactional
+//	public Page<Article> findAll() {
+//
+//		Pageable pageable = PageRequest.of(0, 10);
+//		PageRequest.of(1, 10);
+//		PageRequest.of(2, 10);
+//		PageRequest.of(3, 10);
+//		PageRequest.of(4, 10);
+//		PageRequest.of(5, 10);
+//		Page<Article> page =articleRepository.findAll(pageable);
+//		
+//		return articleRepository.findAll(pageable);
+//	}
+
 	@Transactional
 	public List<Article> findAll() {
 
@@ -38,9 +50,8 @@ public class ArticleService
 	 */
 
 	@Transactional
-	public Article findById(int articleId) 
-	{
-         return articleRepository.findById(articleId).orElseThrow(() -> new ArticleIdNotFoundException(articleId));
+	public Article findById(int articleId) {
+		return articleRepository.findById(articleId).orElseThrow(() -> new ArticleIdNotFoundException(articleId));
 	}
 
 	/**
@@ -51,17 +62,9 @@ public class ArticleService
 	 */
 
 	@Transactional
-	public ResponseEntity<String> deleteById(int articleId) {
+	public void deleteById(int articleId) {
 
-		try {
-			articleRepository.deleteById(articleId);
-			return new ResponseEntity<>("deleted", HttpStatus.OK);
-		} catch (Exception e) {
-
-			throw new ArticleIdNotFoundException(articleId);
-			// return new ResponseEntity<>(e.getMessage(),
-			// HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		articleRepository.deleteById(articleId);
 
 	}
 
@@ -73,13 +76,8 @@ public class ArticleService
 	 */
 
 	@Transactional
-	public ResponseEntity<String> save(Article article) {
-		try {
-			articleRepository.save(article);
-			return new ResponseEntity<>("saved", HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+	public Article save(Article article) {
 
+		return articleRepository.save(article);
 	}
 }

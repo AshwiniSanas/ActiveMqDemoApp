@@ -1,78 +1,33 @@
 package com.activemq.demo.test;
 
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
-import org.everit.json.schema.Schema;
-import org.everit.json.schema.ValidationException;
-import org.everit.json.schema.loader.SchemaLoader;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import com.activemq.demo.SchemaValidator;
+import com.activemq.demo.model.ArticleDto;
 
-import com.fasterxml.jackson.databind.jsonschema.JsonSchema;
+class SchemaValidatorTest {
 
-import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+	private ArticleDto articleDto;
 
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.module.jsv.JsonSchemaValidator;
- class SchemaTest {
- 
-	/*@Test
-    public void checkSchema() {
-        // @formatter:off
-        given().
-        when().
-            get("/articles").
-        then().
-            log().ifValidationFails().
-            assertThat().
-            statusCode(200).
-        and().
-            contentType(ContentType.JSON).
-
-
-    body(matchesJsonSchemaInClasspath("article.json"));
-        // @formatter:on
-    }
-
-	private Matcher<?> matchesJsonSchemaInClasspath(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	@BeforeEach
+	void setUp() {
+		articleDto = ArticleDto.builder().articleId(1).authorEmailAddress("cjn").authorName("njns").isActive(true)
+				.isPublished(false).noOfPages(10).title("cnn").shortTitle("jcj").build();
 	}
 
-	private RestAssured given() {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
-	
-//	@Test
-//	public void givenInvalidInput_whenValidating_thenInvalid() throws ValidationException {
-//	    JSONObject jsonSchema = new JSONObject(
-//	      new JSONTokener(JsonSchema.class.getResourceAsStream("/article.json")));
-//	    JSONObject jsonSubject = new JSONObject(
-//	      new JSONTokener(JsonSchema.class.getResourceAsStream("/product_invalid.json")));
-//	    
-//	    Schema schema = SchemaLoader.load(jsonSchema);
-//	    schema.validate(jsonSubject);
-//	}
-	
+	@AfterEach
+	void tearDown() {
+		articleDto = null;
+	}
+
+	SchemaValidator schemaValidator = new SchemaValidator();
+
 	@Test
-	 void givenValidInput_whenValidating_thenValid() throws ValidationException {
-	    JSONObject jsonSchema = new JSONObject(
-	      new JSONTokener(JsonSchema.class.getResourceAsStream("/article.json")));
-	    JSONObject jsonSubject = new JSONObject(
-	      new JSONTokener(JsonSchema.class.getResourceAsStream("/article_valid.json")));
+	void validateArticleAgainstSchema_throws_no_exception() {
 
-	    
-	    try{
-            Schema schemaValidator = SchemaLoader.load((jsonSchema));
-            schemaValidator.validate(jsonSubject);
-        }catch (Exception e){
-            System.out.println(" message is :"+ e.getMessage());
-        }
-    }
+		assertDoesNotThrow(() -> schemaValidator.validateArticle(articleDto));
 	}
 
+}

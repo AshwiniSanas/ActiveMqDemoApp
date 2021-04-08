@@ -1,21 +1,21 @@
-package com.activemq.demo.exceptions;
+package com.activemq.demo.model;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * This class declares fields for successful request response body
+ * 
  * @author Ashwini.Sanas
  *
  */
 
-@Getter @Setter
+@Component
+@Getter
 public class CustomSuccessResponse {
-	
-  
-    private int status=HttpStatus.OK.value();
-    private String message="Success";
-    
-}
 
+	private int status = HttpStatus.OK.value();
+	private String message = "success";
+
+}

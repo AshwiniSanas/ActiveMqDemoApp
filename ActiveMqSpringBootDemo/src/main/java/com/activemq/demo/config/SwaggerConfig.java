@@ -1,11 +1,9 @@
-package com.activemq.demo;
+package com.activemq.demo.config;
 
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import com.google.common.base.Predicate;
-
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
